@@ -43,37 +43,33 @@ The system architecture for this `COVID-19` data processing pipeline is designed
     <img src="image/arch.jpeg" width="900" />
 </center>
 
-## Data Ingestion with Apache NiFi:
+## Data Ingestion:
 
 - **Data Source**: `COVID-19` data is retrieved from the API `https://covid-api.com/api/` using HTTP requests. `NiFi` handles data ingestion, performing initial cleaning and transformation to prepare the data for further processing.
 
 - **Producer/Consumer**: `NiFi` acts as both producer and consumer, forwarding processed data to `Apache Kafka` for streaming.
 
-## Real-Time Data Streaming with Apache Kafka:
+## Real-Time Data Streaming:
 
 - **Message Brokering**: `Kafka` serves as the message broker, streaming data between system components in real-time.
 
 - **Monitoring**: `Redpanda` monitors `Kafka`’s performance, ensuring system stability.
 
-## Real-Time Processing with Apache Spark Streaming:
-
 - **Streaming Analytics**: `Spark Streaming` processes the data in real-time, performing computations like aggregations and filtering as data flows through `Kafka`.
 
-## Data Storage with Hadoop HDFS:
+## Data Storage:
 
 - **Distributed Storage**: Data is stored in `Hadoop HDFS`, providing scalable, reliable storage.
 
 - **Data Warehousing**: `Apache Hive` on `HDFS` enables efficient querying of large datasets.
 
-## Workflow Orchestration with Apache Airflow:
-
 - **Job Scheduling**: `Airflow` orchestrates and schedules the system’s workflows, ensuring smooth execution of data ingestion, processing, and storage tasks.
 
-## Containerization with Docker:
+## Containerization:
 
 - **Consistency & Deployment**: `Docker` containers ensure consistent environments across development, testing, and production, and are deployed on `AWS EC2` for scalability.
 
-## Data Visualization with Amazon QuickSight:
+## Data Visualization:
 
 - **Interactive Dashboards**: `Amazon QuickSight` visualizes the processed data, allowing for the creation of interactive dashboards and reports.
 
@@ -93,4 +89,5 @@ The system architecture for this `COVID-19` data processing pipeline is designed
 - `Hadoop HDFS`: Provides distributed storage for large volumes of processed data.
 - `Apache Hive`: Allows SQL-like querying and analysis of data stored in HDFS.
 - `Apache Airflow`: Orchestrates and schedules the workflow of the entire system.
+### **Visualization**
 - `Amazon QuickSight`: Provides business intelligence and data visualization capabilities for insightful reporting and analysis.
