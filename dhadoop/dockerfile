@@ -1,0 +1,46 @@
+FROM arm64v8/ubuntu:22.04
+
+LABEL \
+    maintainer="TrungNghia <trungnghia294@gmail.com>" \
+    version="1.0"
+
+WORKDIR /root
+
+ENV TZ=Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    apt-utils\
+    openssh-server \
+    openjdk-8-jdk \
+    wget \
+    vim-gtk
+
+RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+COPY hadoop-3.3.1 /usr/local/hadoop
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-arm64
+ENV HADOOP_HOME /usr/local/hadoop
+ENV HADOOP_CONF_DIR $HADOOP_HOME/etc/hadoop
+ENV HADOOP_INSTALL $HADOOP_HOME
+ENV HADOOP_MAPRED_HOME $HADOOP_HOME
+ENV HADOOP_COMMON_HOME $HADOOP_HOME
+ENV HADOOP_HDFS_HOME $HADOOP_HOME
+ENV HADOOP_YARN_HOME $HADOOP_HOME
+ENV HADOOP_COMMON_LIB_NATIVE $HADOOP_HOME/lib/native
+ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+ENV HADOOP_OPTS "-Djava.library.path=$HADOOP_HOME/lib/native"
+
+RUN chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
+    chmod +x $HADOOP_HOME/sbin/start-yarn.sh
+
+COPY ssh_config ~/.ssh/config
+RUN /usr/local/hadoop/bin/hdfs namenode -format
+
+CMD [ "sh", "-c", "service ssh start; bash"]
+
+COPY entrypoint.sh /root/entrypoint.sh
+RUN chmod +x /root/entrypoint.sh
+ENTRYPOINT ["/root/entrypoint.sh"]
