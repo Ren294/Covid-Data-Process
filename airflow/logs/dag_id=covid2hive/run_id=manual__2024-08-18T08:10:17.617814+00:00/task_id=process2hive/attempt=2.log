@@ -1,0 +1,72 @@
+[2024-08-18T08:15:19.734+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-08-18T08:15:19.745+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: covid2hive.process2hive manual__2024-08-18T08:10:17.617814+00:00 [queued]>
+[2024-08-18T08:15:19.751+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: covid2hive.process2hive manual__2024-08-18T08:10:17.617814+00:00 [queued]>
+[2024-08-18T08:15:19.752+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 2
+[2024-08-18T08:15:19.761+0000] {taskinstance.py:2879} INFO - Executing <Task(SparkSubmitOperator): process2hive> on 2024-08-18 08:10:17.617814+00:00
+[2024-08-18T08:15:19.764+0000] {standard_task_runner.py:72} INFO - Started process 193 to run task
+[2024-08-18T08:15:19.767+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'covid2hive', 'process2hive', 'manual__2024-08-18T08:10:17.617814+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/covid2hive.py', '--cfg-path', '/tmp/tmp7c2ghgb6']
+[2024-08-18T08:15:19.768+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask process2hive
+[2024-08-18T08:15:19.798+0000] {task_command.py:467} INFO - Running <TaskInstance: covid2hive.process2hive manual__2024-08-18T08:10:17.617814+00:00 [running]> on host 76ff1c69b8e4
+[2024-08-18T08:15:19.851+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ren294' AIRFLOW_CTX_DAG_ID='covid2hive' AIRFLOW_CTX_TASK_ID='process2hive' AIRFLOW_CTX_EXECUTION_DATE='2024-08-18T08:10:17.617814+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-18T08:10:17.617814+00:00'
+[2024-08-18T08:15:19.852+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-08-18T08:15:19.866+0000] {spark_submit.py:273} INFO - Could not load connection string spark_default, defaulting to yarn
+[2024-08-18T08:15:19.867+0000] {spark_submit.py:403} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.master=spark://spark-master:7077 --name arrow-spark /opt/spark-apps/data2hive.py
+[2024-08-18T08:15:19.930+0000] {spark_submit.py:579} INFO - /home/***/.local/lib/python3.10/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-08-18T08:15:19.931+0000] {spark_submit.py:579} INFO - JAVA_HOME is not set
+[2024-08-18T08:15:19.938+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 505, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.master=spark://spark-master:7077 --name arrow-spark /opt/spark-apps/data2hive.py. Error code is: 1.
+[2024-08-18T08:15:19.941+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=covid2hive, task_id=process2hive, run_id=manual__2024-08-18T08:10:17.617814+00:00, execution_date=20240818T081017, start_date=20240818T081519, end_date=20240818T081519
+[2024-08-18T08:15:19.948+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-08-18T08:15:19.949+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 11 for task process2hive (Cannot execute: spark-submit --master yarn --conf spark.master=spark://spark-master:7077 --name arrow-spark /opt/spark-apps/data2hive.py. Error code is: 1.; 193)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2995, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3149, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3173, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 505, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.master=spark://spark-master:7077 --name arrow-spark /opt/spark-apps/data2hive.py. Error code is: 1.
+[2024-08-18T08:15:19.989+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2024-08-18T08:15:20.000+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-18T08:15:20.001+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

@@ -1,0 +1,599 @@
+[2024-08-18T10:05:59.370+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-08-18T10:05:59.379+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka2hive.process2hive manual__2024-08-18T10:05:58.476443+00:00 [queued]>
+[2024-08-18T10:05:59.384+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka2hive.process2hive manual__2024-08-18T10:05:58.476443+00:00 [queued]>
+[2024-08-18T10:05:59.384+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 2
+[2024-08-18T10:05:59.391+0000] {taskinstance.py:2879} INFO - Executing <Task(SSHOperator): process2hive> on 2024-08-18 10:05:58.476443+00:00
+[2024-08-18T10:05:59.394+0000] {standard_task_runner.py:72} INFO - Started process 120 to run task
+[2024-08-18T10:05:59.396+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'kafka2hive', 'process2hive', 'manual__2024-08-18T10:05:58.476443+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/kafka2hive.py', '--cfg-path', '/tmp/tmpadddsx7g']
+[2024-08-18T10:05:59.397+0000] {standard_task_runner.py:105} INFO - Job 38: Subtask process2hive
+[2024-08-18T10:05:59.423+0000] {task_command.py:467} INFO - Running <TaskInstance: kafka2hive.process2hive manual__2024-08-18T10:05:58.476443+00:00 [running]> on host 43e90db35cd5
+[2024-08-18T10:05:59.464+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ren294' AIRFLOW_CTX_DAG_ID='kafka2hive' AIRFLOW_CTX_TASK_ID='process2hive' AIRFLOW_CTX_EXECUTION_DATE='2024-08-18T10:05:58.476443+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-18T10:05:58.476443+00:00'
+[2024-08-18T10:05:59.465+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-08-18T10:05:59.472+0000] {ssh.py:151} INFO - Creating ssh_client
+[2024-08-18T10:05:59.473+0000] {ssh.py:124} INFO - ssh_hook is not provided or invalid. Trying ssh_conn_id to create SSHHook.
+[2024-08-18T10:05:59.477+0000] {base.py:84} INFO - Retrieving connection 'spark_conn'
+[2024-08-18T10:05:59.478+0000] {ssh.py:304} WARNING - No Host Key Verification. This won't protect against Man-In-The-Middle attacks
+[2024-08-18T10:05:59.484+0000] {transport.py:1923} INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+[2024-08-18T10:05:59.608+0000] {transport.py:1923} INFO - Authentication (password) successful!
+[2024-08-18T10:05:59.609+0000] {ssh.py:494} INFO - Running command: /opt/spark/bin/spark-submit --master spark://spark-master:7077 /opt/spark-apps/kafka2hive.py
+[2024-08-18T10:06:00.951+0000] {ssh.py:545} WARNING - Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+[2024-08-18T10:06:00.957+0000] {ssh.py:545} WARNING - 24/08/18 17:06:00 INFO SparkContext: Running Spark version 3.2.0
+[2024-08-18T10:06:00.991+0000] {ssh.py:545} WARNING - 24/08/18 17:06:00 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2024-08-18T10:06:01.047+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceUtils: ==============================================================
+[2024-08-18T10:06:01.048+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2024-08-18T10:06:01.049+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceUtils: ==============================================================
+[2024-08-18T10:06:01.049+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkContext: Submitted application: COVID Data Processing
+[2024-08-18T10:06:01.065+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2024-08-18T10:06:01.073+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceProfile: Limiting resource is cpu
+[2024-08-18T10:06:01.074+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2024-08-18T10:06:01.115+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SecurityManager: Changing view acls to: root
+[2024-08-18T10:06:01.116+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SecurityManager: Changing modify acls to: root
+[2024-08-18T10:06:01.116+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SecurityManager: Changing view acls groups to: 
+[2024-08-18T10:06:01.116+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SecurityManager: Changing modify acls groups to: 
+[2024-08-18T10:06:01.117+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+[2024-08-18T10:06:01.305+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO Utils: Successfully started service 'sparkDriver' on port 42913.
+[2024-08-18T10:06:01.326+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkEnv: Registering MapOutputTracker
+[2024-08-18T10:06:01.349+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkEnv: Registering BlockManagerMaster
+[2024-08-18T10:06:01.366+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2024-08-18T10:06:01.366+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2024-08-18T10:06:01.368+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2024-08-18T10:06:01.386+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-e4bfcee6-66ae-4598-8e8b-e99c9037d0ca
+[2024-08-18T10:06:01.402+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+[2024-08-18T10:06:01.412+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkEnv: Registering OutputCommitCoordinator
+[2024-08-18T10:06:01.549+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2024-08-18T10:06:01.581+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://spark-master:4040
+[2024-08-18T10:06:01.723+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://spark-master:7077...
+[2024-08-18T10:06:01.760+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO TransportClientFactory: Successfully created connection to spark-master/192.168.16.12:7077 after 24 ms (0 ms spent in bootstraps)
+[2024-08-18T10:06:01.820+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20240818170601-0002
+[2024-08-18T10:06:01.821+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20240818170601-0002/0 on worker-20240818170135-192.168.16.14-7000 (192.168.16.14:7000) with 12 core(s)
+[2024-08-18T10:06:01.822+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO StandaloneSchedulerBackend: Granted executor ID app-20240818170601-0002/0 on hostPort 192.168.16.14:7000 with 12 core(s), 1024.0 MiB RAM
+[2024-08-18T10:06:01.824+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38421.
+[2024-08-18T10:06:01.825+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO NettyBlockTransferService: Server created on spark-master:38421
+[2024-08-18T10:06:01.825+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2024-08-18T10:06:01.836+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, spark-master, 38421, None)
+[2024-08-18T10:06:01.838+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManagerMasterEndpoint: Registering block manager spark-master:38421 with 366.3 MiB RAM, BlockManagerId(driver, spark-master, 38421, None)
+[2024-08-18T10:06:01.839+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, spark-master, 38421, None)
+[2024-08-18T10:06:01.840+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, spark-master, 38421, None)
+[2024-08-18T10:06:01.841+0000] {ssh.py:545} WARNING - 24/08/18 17:06:01 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20240818170601-0002/0 is now RUNNING
+[2024-08-18T10:06:02.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:02 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+[2024-08-18T10:06:02.179+0000] {ssh.py:545} WARNING - 24/08/18 17:06:02 INFO SharedState: Setting hive.metastore.warehouse.dir ('hdfs://namenode:9000/user/hive/warehouse') to the value of spark.sql.warehouse.dir.
+[2024-08-18T10:06:02.210+0000] {ssh.py:545} WARNING - 24/08/18 17:06:02 INFO SharedState: Warehouse path is 'file:/user/hive/warehouse'.
+[2024-08-18T10:06:03.014+0000] {ssh.py:545} WARNING - 24/08/18 17:06:03 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.16.14:45276) with ID 0,  ResourceProfileId 0
+[2024-08-18T10:06:03.075+0000] {ssh.py:545} WARNING - 24/08/18 17:06:03 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.16.14:43259 with 366.3 MiB RAM, BlockManagerId(0, 192.168.16.14, 43259, None)
+[2024-08-18T10:06:03.407+0000] {ssh.py:545} WARNING - 24/08/18 17:06:03 INFO InMemoryFileIndex: It took 52 ms to list leaf files for 1 paths.
+[2024-08-18T10:06:04.659+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 INFO HiveConf: Found configuration file file:/opt/spark/conf/hive-site.xml
+[2024-08-18T10:06:04.667+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 INFO HiveUtils: Initializing HiveMetastoreConnection version 2.3.9 using Spark classes.
+[2024-08-18T10:06:04.727+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 INFO HiveConf: Found configuration file file:/opt/spark/conf/hive-site.xml
+[2024-08-18T10:06:04.850+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.dump.metadata.only.for.external.table does not exist
+[2024-08-18T10:06:04.851+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.druid.rollup does not exist
+[2024-08-18T10:06:04.852+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retain.prev.dump.dir does not exist
+[2024-08-18T10:06:04.853+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.log.explain.output.to.console does not exist
+[2024-08-18T10:06:04.854+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.delayed.move.timeout does not exist
+[2024-08-18T10:06:04.856+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.privilege.synchronizer does not exist
+[2024-08-18T10:06:04.856+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.wm.default.pool.size does not exist
+[2024-08-18T10:06:04.857+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.task.scheduler.preempt.independent does not exist
+[2024-08-18T10:06:04.858+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.cvb.memory.consumption. does not exist
+[2024-08-18T10:06:04.859+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.output.format.arrow does not exist
+[2024-08-18T10:06:04.860+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.llap.min.reducer.per.executor does not exist
+[2024-08-18T10:06:04.860+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.path.cache.size does not exist
+[2024-08-18T10:06:04.861+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.arrow.root.allocator.limit does not exist
+[2024-08-18T10:06:04.861+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.topnkey.max does not exist
+[2024-08-18T10:06:04.862+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.splits.available.slots.calculator.class.name does not exist
+[2024-08-18T10:06:04.863+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.use.checked.expressions does not exist
+[2024-08-18T10:06:04.864+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.delete.metadata.only does not exist
+[2024-08-18T10:06:04.865+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.filter.preds.sort does not exist
+[2024-08-18T10:06:04.865+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.wait.timeout does not exist
+[2024-08-18T10:06:04.866+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.nodehealthchecks.executorratio does not exist
+[2024-08-18T10:06:04.866+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.transform.in.maxnodes does not exist
+[2024-08-18T10:06:04.867+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.date.proleptic.gregorian.default does not exist
+[2024-08-18T10:06:04.868+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.security.authorization.functions.in.view does not exist
+[2024-08-18T10:06:04.868+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.saml2.sign.requests does not exist
+[2024-08-18T10:06:04.868+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.dynamic.semijoin.reduction.for.mapjoin does not exist
+[2024-08-18T10:06:04.868+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.metadata.query.cache.enabled does not exist
+[2024-08-18T10:06:04.869+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.test.fail.load.dynamic.partition does not exist
+[2024-08-18T10:06:04.869+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.cli.tez.initialize.session does not exist
+[2024-08-18T10:06:04.870+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.complex.types.enabled does not exist
+[2024-08-18T10:06:04.870+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.worker.threads does not exist
+[2024-08-18T10:06:04.870+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.delayed.move does not exist
+[2024-08-18T10:06:04.870+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.umbilical.port does not exist
+[2024-08-18T10:06:04.871+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.saml2.callback.token.ttl does not exist
+[2024-08-18T10:06:04.871+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.partitions.dump.parallelism does not exist
+[2024-08-18T10:06:04.871+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.thrift.client.max.message.size does not exist
+[2024-08-18T10:06:04.871+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.uri.selection does not exist
+[2024-08-18T10:06:04.872+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.strict.checks.no.partition.filter does not exist
+[2024-08-18T10:06:04.872+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.datetime.formatter does not exist
+[2024-08-18T10:06:04.872+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.dynamic.semijoin.reduction.for.dpp.factor does not exist
+[2024-08-18T10:06:04.873+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rewriting.sql does not exist
+[2024-08-18T10:06:04.873+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.delayed.cleanup.enabled does not exist
+[2024-08-18T10:06:04.873+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.filter.in.min.ratio does not exist
+[2024-08-18T10:06:04.873+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.downstream.merge does not exist
+[2024-08-18T10:06:04.874+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.xframe.enabled does not exist
+[2024-08-18T10:06:04.874+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.initial.capacity does not exist
+[2024-08-18T10:06:04.874+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retry.total.duration does not exist
+[2024-08-18T10:06:04.874+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hook.proto.file.per.event does not exist
+[2024-08-18T10:06:04.875+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.worker.sleep.time does not exist
+[2024-08-18T10:06:04.878+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.web.xframe.enabled does not exist
+[2024-08-18T10:06:04.878+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.ndv.estimate.percent does not exist
+[2024-08-18T10:06:04.878+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.cors.allowed.methods does not exist
+[2024-08-18T10:06:04.879+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.joinreducededuplication does not exist
+[2024-08-18T10:06:04.879+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.dynamic.partition.pruning.extended does not exist
+[2024-08-18T10:06:04.880+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.estimators.enable does not exist
+[2024-08-18T10:06:04.880+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.cume_dist.enabled does not exist
+[2024-08-18T10:06:04.880+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.enabled does not exist
+[2024-08-18T10:06:04.880+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.executor.progress.report.interval does not exist
+[2024-08-18T10:06:04.881+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.test.acid.key.index.skip does not exist
+[2024-08-18T10:06:04.881+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.fetch.bitvector does not exist
+[2024-08-18T10:06:04.881+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.disable.unsafe.external.table.operations does not exist
+[2024-08-18T10:06:04.882+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rewriting.incremental does not exist
+[2024-08-18T10:06:04.882+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.materializedviews.registry.impl does not exist
+[2024-08-18T10:06:04.882+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.etl.skip.format does not exist
+[2024-08-18T10:06:04.882+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.event.db.notification.api.auth does not exist
+[2024-08-18T10:06:04.883+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.exec.orc.delta.streaming.optimizations.enabled does not exist
+[2024-08-18T10:06:04.883+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.dppunion.merge.eventops does not exist
+[2024-08-18T10:06:04.883+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.ndv.algo does not exist
+[2024-08-18T10:06:04.884+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.udtf.factor does not exist
+[2024-08-18T10:06:04.884+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.task.scheduler.am.collect.daemon.metrics.ms does not exist
+[2024-08-18T10:06:04.884+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.filter.range.uniform does not exist
+[2024-08-18T10:06:04.884+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.msck.repair.batch.max.retries does not exist
+[2024-08-18T10:06:04.885+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.load.partitions.batch.size does not exist
+[2024-08-18T10:06:04.885+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.update.table.properties.from.serde.list does not exist
+[2024-08-18T10:06:04.885+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.zookeeper.killquery.enable does not exist
+[2024-08-18T10:06:04.886+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.metrics.max.cache.size does not exist
+[2024-08-18T10:06:04.886+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.zookeeper.ssl.client.enable does not exist
+[2024-08-18T10:06:04.886+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.aborted.txn.time.threshold does not exist
+[2024-08-18T10:06:04.886+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.lock.file.move.protect does not exist
+[2024-08-18T10:06:04.887+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.lockless.reads.enabled does not exist
+[2024-08-18T10:06:04.887+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.max.graph.size does not exist
+[2024-08-18T10:06:04.887+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.plugin.client.num.threads does not exist
+[2024-08-18T10:06:04.887+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.test.bucketcodec.version does not exist
+[2024-08-18T10:06:04.888+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.write.acid.version.file does not exist
+[2024-08-18T10:06:04.888+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.enabled does not exist
+[2024-08-18T10:06:04.888+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rewriting.time.window does not exist
+[2024-08-18T10:06:04.888+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.stats.cache.batch.size does not exist
+[2024-08-18T10:06:04.889+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.small.delta.dir.threshold does not exist
+[2024-08-18T10:06:04.889+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.countdistinct.enabled does not exist
+[2024-08-18T10:06:04.889+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.cors.allowed.headers does not exist
+[2024-08-18T10:06:04.890+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.metrics.timed.window.average.data.points does not exist
+[2024-08-18T10:06:04.890+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.avro.timestamp.write.legacy.conversion.enabled does not exist
+[2024-08-18T10:06:04.890+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.join.inner.residual does not exist
+[2024-08-18T10:06:04.891+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.active.passive.ha.enable does not exist
+[2024-08-18T10:06:04.891+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.trace.always.dump does not exist
+[2024-08-18T10:06:04.891+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.stats.persist.scope does not exist
+[2024-08-18T10:06:04.891+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.hdfs.package.dir does not exist
+[2024-08-18T10:06:04.892+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.xlock.ctas does not exist
+[2024-08-18T10:06:04.892+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ctas.external.tables does not exist
+[2024-08-18T10:06:04.892+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mm.allow.originals does not exist
+[2024-08-18T10:06:04.893+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.merge.ts.schema does not exist
+[2024-08-18T10:06:04.893+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.create.as.enabled does not exist
+[2024-08-18T10:06:04.893+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.compact.insert.only does not exist
+[2024-08-18T10:06:04.893+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.ranger.client.read.timeout does not exist
+[2024-08-18T10:06:04.894+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.avro.proleptic.gregorian does not exist
+[2024-08-18T10:06:04.894+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.load.dynamic.partitions.scan.specific.partitions does not exist
+[2024-08-18T10:06:04.894+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.write.notification.max.batch.size does not exist
+[2024-08-18T10:06:04.895+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.xlock.iow does not exist
+[2024-08-18T10:06:04.895+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.lineage.hook.info.enabled does not exist
+[2024-08-18T10:06:04.895+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.test.load.utilization does not exist
+[2024-08-18T10:06:04.895+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.cache.defaultfs.only.native.fileid does not exist
+[2024-08-18T10:06:04.896+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.saml2.want.assertions.signed does not exist
+[2024-08-18T10:06:04.896+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.ha.datapath.replace.remote.nameservice does not exist
+[2024-08-18T10:06:04.896+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.operation.log.purgePolicy.timeToLive does not exist
+[2024-08-18T10:06:04.897+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.kerberos.enabled does not exist
+[2024-08-18T10:06:04.897+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.testing.remove.logs does not exist
+[2024-08-18T10:06:04.897+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.distcp.privileged.doAs does not exist
+[2024-08-18T10:06:04.897+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.strict.checks.orderby.no.limit does not exist
+[2024-08-18T10:06:04.898+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.cbo.stats.correlated.multi.key.joins does not exist
+[2024-08-18T10:06:04.898+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.table.dump.parallelism does not exist
+[2024-08-18T10:06:04.898+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.explain.node.visit.limit does not exist
+[2024-08-18T10:06:04.899+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.expiry.time does not exist
+[2024-08-18T10:06:04.899+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.async.cleanup.service.queue.size does not exist
+[2024-08-18T10:06:04.899+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.allocator.defrag.headroom does not exist
+[2024-08-18T10:06:04.900+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.notification.event.consumers does not exist
+[2024-08-18T10:06:04.900+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.iceberg.mask.default.location does not exist
+[2024-08-18T10:06:04.900+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.input.format.supports.enabled does not exist
+[2024-08-18T10:06:04.900+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.max.capacity does not exist
+[2024-08-18T10:06:04.901+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.crud.query.based does not exist
+[2024-08-18T10:06:04.901+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hook.proto.events.ttl does not exist
+[2024-08-18T10:06:04.901+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.request.queue does not exist
+[2024-08-18T10:06:04.901+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.namespace does not exist
+[2024-08-18T10:06:04.902+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.max.concurrent.requests.per.daemon does not exist
+[2024-08-18T10:06:04.902+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.v2.enabled does not exist
+[2024-08-18T10:06:04.902+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.timestamp.write.legacy.conversion.enabled does not exist
+[2024-08-18T10:06:04.902+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.nodehealthchecks.minintervalduration does not exist
+[2024-08-18T10:06:04.903+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.client.cloud.rpc.port does not exist
+[2024-08-18T10:06:04.903+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.include.authorization.metadata does not exist
+[2024-08-18T10:06:04.903+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.cache.hydration.save.dir does not exist
+[2024-08-18T10:06:04.903+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.parallel.copy.tasks does not exist
+[2024-08-18T10:06:04.904+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.external.warehouse.single.copy.task does not exist
+[2024-08-18T10:06:04.904+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.use.pam does not exist
+[2024-08-18T10:06:04.904+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ptf.valuecache.collect.statistics does not exist
+[2024-08-18T10:06:04.904+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.max.count does not exist
+[2024-08-18T10:06:04.905+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.share.object.pools does not exist
+[2024-08-18T10:06:04.905+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.update.table.properties.from.serde does not exist
+[2024-08-18T10:06:04.905+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.service.metrics.codahale.reporter.classes does not exist
+[2024-08-18T10:06:04.905+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.cleaner.duration.update.interval does not exist
+[2024-08-18T10:06:04.906+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.session.events.print.summary does not exist
+[2024-08-18T10:06:04.906+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.security.hbase.urlencode.authorization.uri does not exist
+[2024-08-18T10:06:04.906+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.acid.meta.columns does not exist
+[2024-08-18T10:06:04.906+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.cume_dist.sketch does not exist
+[2024-08-18T10:06:04.907+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.metrics.timed.window.average.window.length does not exist
+[2024-08-18T10:06:04.907+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mm.avoid.s3.globstatus does not exist
+[2024-08-18T10:06:04.907+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.externaltable.snapshotdiff.copy does not exist
+[2024-08-18T10:06:04.907+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.replica.functions.root.dir does not exist
+[2024-08-18T10:06:04.908+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.avro.timestamp.legacy.conversion.enabled does not exist
+[2024-08-18T10:06:04.908+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.max.entry.lifetime does not exist
+[2024-08-18T10:06:04.908+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.fetch.task.caching does not exist
+[2024-08-18T10:06:04.908+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.limit.connections.per.user does not exist
+[2024-08-18T10:06:04.909+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.parallel.edge.support does not exist
+[2024-08-18T10:06:04.909+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.sort.dynamic.partition.threshold does not exist
+[2024-08-18T10:06:04.909+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.thrift.http.compression.enabled does not exist
+[2024-08-18T10:06:04.910+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.split.update does not exist
+[2024-08-18T10:06:04.910+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.strict.managed.tables does not exist
+[2024-08-18T10:06:04.910+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.limit does not exist
+[2024-08-18T10:06:04.910+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.rank.enabled does not exist
+[2024-08-18T10:06:04.911+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.execution.ptf.enabled does not exist
+[2024-08-18T10:06:04.911+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.extended does not exist
+[2024-08-18T10:06:04.911+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.row.identifier.enabled does not exist
+[2024-08-18T10:06:04.912+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.always.collect.operator.stats does not exist
+[2024-08-18T10:06:04.912+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.worker.max.sleep.time does not exist
+[2024-08-18T10:06:04.912+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.ntile.sketch does not exist
+[2024-08-18T10:06:04.912+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.historic.operation.log.check.interval does not exist
+[2024-08-18T10:06:04.913+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.nonacid.read.locks does not exist
+[2024-08-18T10:06:04.913+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.cte.materialize.full.aggregate.only does not exist
+[2024-08-18T10:06:04.913+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.exec.use.fqdn does not exist
+[2024-08-18T10:06:04.914+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.local.time.zone does not exist
+[2024-08-18T10:06:04.914+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.tez.wm.am.registry.timeout does not exist
+[2024-08-18T10:06:04.914+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.lrfu.hotbuffers.percentage does not exist
+[2024-08-18T10:06:04.914+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.active.passive.ha.registry.namespace does not exist
+[2024-08-18T10:06:04.915+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.create.as.insert.only does not exist
+[2024-08-18T10:06:04.915+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.bootstrap.external.tables does not exist
+[2024-08-18T10:06:04.915+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.mapjoin.memory.oversubscribe.factor does not exist
+[2024-08-18T10:06:04.915+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.arrow.batch.size does not exist
+[2024-08-18T10:06:04.916+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.operation.log.fetch.maxBytes does not exist
+[2024-08-18T10:06:04.916+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.dppunion does not exist
+[2024-08-18T10:06:04.916+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.notification.sequence.lock.retry.sleep.interval does not exist
+[2024-08-18T10:06:04.916+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.date.proleptic.gregorian does not exist
+[2024-08-18T10:06:04.916+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.security.authorization.scheduled.queries.supported does not exist
+[2024-08-18T10:06:04.917+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.approx.max.load.tasks does not exist
+[2024-08-18T10:06:04.917+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.enabled does not exist
+[2024-08-18T10:06:04.917+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.legacy.schema.for.all.serdes does not exist
+[2024-08-18T10:06:04.917+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.nodehealthchecks.mintasks does not exist
+[2024-08-18T10:06:04.918+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.include.external.tables does not exist
+[2024-08-18T10:06:04.918+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.dag.status.check.interval does not exist
+[2024-08-18T10:06:04.918+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.external.table.purge.default does not exist
+[2024-08-18T10:06:04.919+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.druid.bitmap.type does not exist
+[2024-08-18T10:06:04.919+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.exec.orc.blob.storage.split.size does not exist
+[2024-08-18T10:06:04.919+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.exec.orc.writer.llap.memory.manager.enabled does not exist
+[2024-08-18T10:06:04.919+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.filter.transactions does not exist
+[2024-08-18T10:06:04.920+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.externaltable.snapshot.overwrite.target does not exist
+[2024-08-18T10:06:04.920+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.extend.bucketid.range does not exist
+[2024-08-18T10:06:04.920+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.ntile.enabled does not exist
+[2024-08-18T10:06:04.920+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.delegation.token.renew.interval does not exist
+[2024-08-18T10:06:04.921+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.memory.oversubscription.max.executors.per.query does not exist
+[2024-08-18T10:06:04.921+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compute.splits.num.threads does not exist
+[2024-08-18T10:06:04.921+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.concatenate.external.table does not exist
+[2024-08-18T10:06:04.921+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.execution.filesink.arrow.native.enabled does not exist
+[2024-08-18T10:06:04.922+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.semijoin does not exist
+[2024-08-18T10:06:04.922+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.trace.size does not exist
+[2024-08-18T10:06:04.922+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.planmapper.link.relnodes does not exist
+[2024-08-18T10:06:04.922+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.kudu.master.addresses.default does not exist
+[2024-08-18T10:06:04.923+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.plugin.rpc.num.handlers does not exist
+[2024-08-18T10:06:04.923+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.test.load.interval does not exist
+[2024-08-18T10:06:04.923+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.async.cleanup.service.thread.count does not exist
+[2024-08-18T10:06:04.923+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.allow.any.pool.via.jdbc does not exist
+[2024-08-18T10:06:04.924+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.batch.incremental.events does not exist
+[2024-08-18T10:06:04.924+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.dump.skip.immutable.data.copy does not exist
+[2024-08-18T10:06:04.924+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.ranger.target.deny.policy does not exist
+[2024-08-18T10:06:04.924+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.groupby.complex.types.enabled does not exist
+[2024-08-18T10:06:04.925+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.avro.timestamp.skip.conversion does not exist
+[2024-08-18T10:06:04.925+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.proactive.eviction.instant.dealloc does not exist
+[2024-08-18T10:06:04.925+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.cbo.fallback.strategy does not exist
+[2024-08-18T10:06:04.925+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.nontransactional.tables.enabled does not exist
+[2024-08-18T10:06:04.926+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.log.explain.output.include.extended does not exist
+[2024-08-18T10:06:04.926+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.correlated.multi.key.joins does not exist
+[2024-08-18T10:06:04.926+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.active.delta.dir.threshold does not exist
+[2024-08-18T10:06:04.927+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.db.type does not exist
+[2024-08-18T10:06:04.927+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.acid.metrics.logger.frequency does not exist
+[2024-08-18T10:06:04.927+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.dir.cache.duration does not exist
+[2024-08-18T10:06:04.928+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.iceberg.allow.datafiles.in.table.location.only does not exist
+[2024-08-18T10:06:04.928+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.streaming.auto.flush.check.interval.size does not exist
+[2024-08-18T10:06:04.928+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rewriting.sql.subquery does not exist
+[2024-08-18T10:06:04.928+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.lrfu.bp.wrapper.size does not exist
+[2024-08-18T10:06:04.929+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ranger.use.fully.qualified.url does not exist
+[2024-08-18T10:06:04.929+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.iceberg.metadata.generator.threads does not exist
+[2024-08-18T10:06:04.929+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.map.aggr.hash.min.reduction.stats does not exist
+[2024-08-18T10:06:04.929+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.zookeeper.connection.timeout does not exist
+[2024-08-18T10:06:04.930+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.strategies does not exist
+[2024-08-18T10:06:04.930+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.v2.maxSize does not exist
+[2024-08-18T10:06:04.934+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.metrics.simple.average.data.points does not exist
+[2024-08-18T10:06:04.934+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.limit.connections.per.user.ipaddress does not exist
+[2024-08-18T10:06:04.934+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.namespace does not exist
+[2024-08-18T10:06:04.935+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.ext.locking.enabled does not exist
+[2024-08-18T10:06:04.935+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.split.grouping.mode does not exist
+[2024-08-18T10:06:04.935+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.metrics.delta.pct.threshold does not exist
+[2024-08-18T10:06:04.935+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.include.materialized.views does not exist
+[2024-08-18T10:06:04.936+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.topnkey.efficiency.check.nbatches does not exist
+[2024-08-18T10:06:04.937+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.mapjoin.memory.monitor.check.interval does not exist
+[2024-08-18T10:06:04.937+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work does not exist
+[2024-08-18T10:06:04.938+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.clustered.sort does not exist
+[2024-08-18T10:06:04.941+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.estimate does not exist
+[2024-08-18T10:06:04.942+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.proactive.eviction.sweep.interval does not exist
+[2024-08-18T10:06:04.942+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retry.max.delay.between.retries does not exist
+[2024-08-18T10:06:04.943+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ppd.recognize.column.equalities does not exist
+[2024-08-18T10:06:04.944+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.show.graph does not exist
+[2024-08-18T10:06:04.944+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.failover.start does not exist
+[2024-08-18T10:06:04.944+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.allocator.discard.method does not exist
+[2024-08-18T10:06:04.945+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.cartesian-product.enabled does not exist
+[2024-08-18T10:06:04.945+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.split.location.provider.class does not exist
+[2024-08-18T10:06:04.945+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.notification.sequence.lock.max.retries does not exist
+[2024-08-18T10:06:04.945+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.heap.memory.monitor.usage.threshold does not exist
+[2024-08-18T10:06:04.946+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.encode.threadpool.multiplier does not exist
+[2024-08-18T10:06:04.946+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.include.atlas.metadata does not exist
+[2024-08-18T10:06:04.946+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.cleaner.threads.num does not exist
+[2024-08-18T10:06:04.947+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.privilege.synchronizer.interval does not exist
+[2024-08-18T10:06:04.947+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.create.as.external.legacy does not exist
+[2024-08-18T10:06:04.947+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.use.scratchdir.for.staging does not exist
+[2024-08-18T10:06:04.947+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.adaptor.suppress.evaluate.exceptions does not exist
+[2024-08-18T10:06:04.948+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.allocator.preallocate does not exist
+[2024-08-18T10:06:04.948+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rebuild.incremental does not exist
+[2024-08-18T10:06:04.948+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.lockmetrics.collect does not exist
+[2024-08-18T10:06:04.948+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.masking.algo does not exist
+[2024-08-18T10:06:04.949+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.max.entry.size does not exist
+[2024-08-18T10:06:04.949+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mapred.job.follow.tez.queue does not exist
+[2024-08-18T10:06:04.949+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.testing.short.logs does not exist
+[2024-08-18T10:06:04.949+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.client.use.hybrid.calendar does not exist
+[2024-08-18T10:06:04.950+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.timestamp.legacy.conversion.enabled does not exist
+[2024-08-18T10:06:04.950+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.druid.kerberos.enable does not exist
+[2024-08-18T10:06:04.950+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.xframe.value does not exist
+[2024-08-18T10:06:04.950+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.saml2.max.authentication.lifetime does not exist
+[2024-08-18T10:06:04.950+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.driver.parallel.compilation.global.limit does not exist
+[2024-08-18T10:06:04.951+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.mapreduce.output.committer.class does not exist
+[2024-08-18T10:06:04.951+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.stats.events.count does not exist
+[2024-08-18T10:06:04.951+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.syslog.input.format.file.pruning does not exist
+[2024-08-18T10:06:04.951+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.streaming.auto.flush.enabled does not exist
+[2024-08-18T10:06:04.952+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hdfs.encryption.shim.cache.on does not exist
+[2024-08-18T10:06:04.952+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.shared.work.mapjoin.cache.reuse does not exist
+[2024-08-18T10:06:04.952+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.write.int64.timestamp does not exist
+[2024-08-18T10:06:04.952+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.percentile_disc.sketch does not exist
+[2024-08-18T10:06:04.953+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.createtable.softdelete does not exist
+[2024-08-18T10:06:04.953+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.gather.stats does not exist
+[2024-08-18T10:06:04.954+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.describe.partitionedtable.ignore.stats does not exist
+[2024-08-18T10:06:04.954+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.xprod.mapjoin.small.table.rows does not exist
+[2024-08-18T10:06:04.955+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retain.prev.dump.dir.count does not exist
+[2024-08-18T10:06:04.955+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.exec.dynamic.partition.type.conversion does not exist
+[2024-08-18T10:06:04.955+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.read.locks does not exist
+[2024-08-18T10:06:04.955+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.initiator.duration.update.interval does not exist
+[2024-08-18T10:06:04.956+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.operation.log.cleanup.delay does not exist
+[2024-08-18T10:06:04.956+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.kll.enable does not exist
+[2024-08-18T10:06:04.956+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.dynamic.semijoin.reduction.multicolumn does not exist
+[2024-08-18T10:06:04.956+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.zookeeper.kerberos.enabled does not exist
+[2024-08-18T10:06:04.957+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.run.data.copy.tasks.on.target does not exist
+[2024-08-18T10:06:04.957+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.dump.metadata.only does not exist
+[2024-08-18T10:06:04.957+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.show.stats does not exist
+[2024-08-18T10:06:04.957+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.countdistinct does not exist
+[2024-08-18T10:06:04.958+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.daemon.web.xframe.value does not exist
+[2024-08-18T10:06:04.958+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.v2.recordStats does not exist
+[2024-08-18T10:06:04.958+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.graceful.stop.timeout does not exist
+[2024-08-18T10:06:04.958+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.jdbc.pushdown.safe.enable does not exist
+[2024-08-18T10:06:04.959+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.union.flatten.subdirectories does not exist
+[2024-08-18T10:06:04.960+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.xlock.mergeinsert does not exist
+[2024-08-18T10:06:04.961+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retain.custom.db.locations.on.target does not exist
+[2024-08-18T10:06:04.961+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.auto.convert.join.shuffle.max.size does not exist
+[2024-08-18T10:06:04.962+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rebuild.incremental.factor does not exist
+[2024-08-18T10:06:04.962+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.plugin.acl does not exist
+[2024-08-18T10:06:04.963+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.max.executors does not exist
+[2024-08-18T10:06:04.964+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.authorization.provider.service does not exist
+[2024-08-18T10:06:04.964+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.external.client.connect.timeout does not exist
+[2024-08-18T10:06:04.964+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.schema.info.class does not exist
+[2024-08-18T10:06:04.965+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.stats.enabled does not exist
+[2024-08-18T10:06:04.965+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.kll.k.param does not exist
+[2024-08-18T10:06:04.965+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.create.as.acid does not exist
+[2024-08-18T10:06:04.966+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.auto.reducer.parallelism.min.threshold does not exist
+[2024-08-18T10:06:04.966+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.infer.binary.as does not exist
+[2024-08-18T10:06:04.967+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.handle.ranger.deny.policy does not exist
+[2024-08-18T10:06:04.967+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.tez.queue.access.check does not exist
+[2024-08-18T10:06:04.967+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.splits.temp.table.storage.format does not exist
+[2024-08-18T10:06:04.968+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.row.wrapper.enabled does not exist
+[2024-08-18T10:06:04.968+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.proactive.eviction.enabled does not exist
+[2024-08-18T10:06:04.968+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.avro.proleptic.gregorian.default does not exist
+[2024-08-18T10:06:04.969+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.join.ndv.readjustment does not exist
+[2024-08-18T10:06:04.969+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.use.bitvectors does not exist
+[2024-08-18T10:06:04.970+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.constraint.notnull.enforce does not exist
+[2024-08-18T10:06:04.970+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.unordered.output.buffer.size.mb does not exist
+[2024-08-18T10:06:04.970+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.materializedviews.registry.refresh.period does not exist
+[2024-08-18T10:06:04.971+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.csrf.filter.enabled does not exist
+[2024-08-18T10:06:04.971+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.task.time.print.summary does not exist
+[2024-08-18T10:06:04.971+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.syslog.input.format.file.time.slice does not exist
+[2024-08-18T10:06:04.972+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.nodehealthchecks.maxnodes does not exist
+[2024-08-18T10:06:04.972+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.cli.print.escape.crlf does not exist
+[2024-08-18T10:06:04.972+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.trigger.validation.interval does not exist
+[2024-08-18T10:06:04.972+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hook.proto.rollover-interval does not exist
+[2024-08-18T10:06:04.973+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.transpose.aggr.join.unique does not exist
+[2024-08-18T10:06:04.973+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.historic.operation.log.enabled does not exist
+[2024-08-18T10:06:04.973+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compaction.merge.enabled does not exist
+[2024-08-18T10:06:04.973+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retry.jitter does not exist
+[2024-08-18T10:06:04.974+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.cors.allowed.origins does not exist
+[2024-08-18T10:06:04.974+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.limit.connections.per.ipaddress does not exist
+[2024-08-18T10:06:04.974+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.cache.deletedeltas does not exist
+[2024-08-18T10:06:04.974+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.truncate.usebase does not exist
+[2024-08-18T10:06:04.975+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.bootstrap.acid.tables does not exist
+[2024-08-18T10:06:04.975+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.obsolete.delta.dir.threshold does not exist
+[2024-08-18T10:06:04.975+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.enabled does not exist
+[2024-08-18T10:06:04.975+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.security.authorization.kerberos.use.shortname does not exist
+[2024-08-18T10:06:04.976+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.iceberg.expire.snapshot.numthreads does not exist
+[2024-08-18T10:06:04.976+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.metastore.client.cache.stats.enabled does not exist
+[2024-08-18T10:06:04.976+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mapjoin.hashtable.load.threads does not exist
+[2024-08-18T10:06:04.977+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.executor.idle.sleep.time does not exist
+[2024-08-18T10:06:04.977+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.notification.event.poll.interval does not exist
+[2024-08-18T10:06:04.977+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.transactional.concatenate.noblock does not exist
+[2024-08-18T10:06:04.978+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.join.disjunctive.transitive.predicates.pushdown does not exist
+[2024-08-18T10:06:04.978+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.iceberg.stats.source does not exist
+[2024-08-18T10:06:04.979+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.materializedview.rewriting.strategy does not exist
+[2024-08-18T10:06:04.979+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.vrb.queue.limit.max does not exist
+[2024-08-18T10:06:04.979+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.rewrite.data.policy does not exist
+[2024-08-18T10:06:04.980+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.default.nulls.last does not exist
+[2024-08-18T10:06:04.980+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.direct.insert.enabled does not exist
+[2024-08-18T10:06:04.980+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mr.compactor.gather.stats does not exist
+[2024-08-18T10:06:04.981+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.if.expr.mode does not exist
+[2024-08-18T10:06:04.981+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.atlas.client.read.timeout does not exist
+[2024-08-18T10:06:04.981+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.exim.test.mode does not exist
+[2024-08-18T10:06:04.981+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.directory does not exist
+[2024-08-18T10:06:04.982+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.trusted.domain.use.xff.header does not exist
+[2024-08-18T10:06:04.982+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.compactor.cleaner.retention.time.seconds does not exist
+[2024-08-18T10:06:04.982+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.allocator.max.force.eviction does not exist
+[2024-08-18T10:06:04.982+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.metrics.delta.num.threshold does not exist
+[2024-08-18T10:06:04.983+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.retrysnapshot.max.count does not exist
+[2024-08-18T10:06:04.983+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.topnkey does not exist
+[2024-08-18T10:06:04.983+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.load.partitions.with.data.copy.batch.size does not exist
+[2024-08-18T10:06:04.983+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.nodehealthchecks.tasktimeratio does not exist
+[2024-08-18T10:06:04.983+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.wait.for.pending.results does not exist
+[2024-08-18T10:06:04.984+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.bloom.filter.merge.threads does not exist
+[2024-08-18T10:06:04.992+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.client.cloud.deployment.setup.enabled does not exist
+[2024-08-18T10:06:04.992+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.join.shortcut.unmatched.rows does not exist
+[2024-08-18T10:06:04.992+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.recompilation.max.count does not exist
+[2024-08-18T10:06:04.992+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.datetime.formatter.resolver.style does not exist
+[2024-08-18T10:06:04.993+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.remove.orderby.in.subquery does not exist
+[2024-08-18T10:06:04.993+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.arrow.batch.allocator.limit does not exist
+[2024-08-18T10:06:04.993+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.topnkey.partitions.max does not exist
+[2024-08-18T10:06:04.994+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.cache.only does not exist
+[2024-08-18T10:06:04.994+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.tez.bmj.use.subcache does not exist
+[2024-08-18T10:06:04.994+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.metrics.obsolete.delta.num.threshold does not exist
+[2024-08-18T10:06:04.994+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.max.length does not exist
+[2024-08-18T10:06:04.995+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.delete.all does not exist
+[2024-08-18T10:06:04.995+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.delayed.move.validator.interval does not exist
+[2024-08-18T10:06:04.995+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.percentile_disc.enabled does not exist
+[2024-08-18T10:06:04.996+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.vrb.queue.limit.min does not exist
+[2024-08-18T10:06:04.996+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.wm.pool.metrics does not exist
+[2024-08-18T10:06:04.996+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ptf.valuecache.size does not exist
+[2024-08-18T10:06:04.996+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.client.cloud.jwt.shared.secret.provider does not exist
+[2024-08-18T10:06:04.997+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.xlock.write does not exist
+[2024-08-18T10:06:04.997+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retry.backoff.coefficient does not exist
+[2024-08-18T10:06:04.997+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.add.raw.reserved.namespace does not exist
+[2024-08-18T10:06:04.998+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.jdbc.pushdown.enable does not exist
+[2024-08-18T10:06:04.998+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.droppartition.usebase does not exist
+[2024-08-18T10:06:04.998+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.saml2.sp.force.auth does not exist
+[2024-08-18T10:06:04.998+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.resource.use.hdfs.location does not exist
+[2024-08-18T10:06:04.999+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.parquet.timestamp.time.unit does not exist
+[2024-08-18T10:06:04.999+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.num.nulls.estimate.percent does not exist
+[2024-08-18T10:06:04.999+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.rank.sketch does not exist
+[2024-08-18T10:06:04.999+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.cm.encryptionzone.rootdir does not exist
+[2024-08-18T10:06:05.000+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.use.googleregex.engine does not exist
+[2024-08-18T10:06:05.000+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.ptf.rangecache.size does not exist
+[2024-08-18T10:06:05.000+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.acid does not exist
+[2024-08-18T10:06:05.001+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.external.client.cloud.output.service.port does not exist
+[2024-08-18T10:06:05.001+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.bootstrap.dump.abort.write.txn.after.timeout does not exist
+[2024-08-18T10:06:05.001+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.filter.delete.events does not exist
+[2024-08-18T10:06:05.001+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.zk.sm.session.timeout does not exist
+[2024-08-18T10:06:05.002+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.scheduled.queries.executor.enabled does not exist
+[2024-08-18T10:06:05.002+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.load.data.use.native.api does not exist
+[2024-08-18T10:06:05.002+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.ptf.max.memory.buffering.batch.count does not exist
+[2024-08-18T10:06:05.002+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.task.scheduler.am.registry does not exist
+[2024-08-18T10:06:05.003+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.bi.rewrite.countdistinct.sketch does not exist
+[2024-08-18T10:06:05.003+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.druid.overlord.address.default does not exist
+[2024-08-18T10:06:05.003+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.remove.sq_count_check does not exist
+[2024-08-18T10:06:05.003+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.map.aggr.hash.min.reduction.lower.bound does not exist
+[2024-08-18T10:06:05.004+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.basic.stats.max.threads.factor does not exist
+[2024-08-18T10:06:05.004+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.enable.cors does not exist
+[2024-08-18T10:06:05.004+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.acid.renamepartition.makecopy does not exist
+[2024-08-18T10:06:05.004+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.constraints.join does not exist
+[2024-08-18T10:06:05.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.vectorized.row.serde.inputformat.excludes does not exist
+[2024-08-18T10:06:05.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.locks.max.partitions does not exist
+[2024-08-18T10:06:05.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.reexecution.stats.cache.size does not exist
+[2024-08-18T10:06:05.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.strict.checks.offset.no.orderby does not exist
+[2024-08-18T10:06:05.005+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.readonly.enabled does not exist
+[2024-08-18T10:06:05.006+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hook.proto.queue.capacity does not exist
+[2024-08-18T10:06:05.006+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.view.tables.cache.enabled does not exist
+[2024-08-18T10:06:05.007+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.scan.probedecode does not exist
+[2024-08-18T10:06:05.007+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.security.authorization.tables.on.storagehandlers does not exist
+[2024-08-18T10:06:05.007+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.show.operation.drilldown.link does not exist
+[2024-08-18T10:06:05.008+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.txn.acid.metrics.reporting.interval does not exist
+[2024-08-18T10:06:05.008+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.zookeeper.killquery.namespace does not exist
+[2024-08-18T10:06:05.008+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.copy.file.list.iterator.retry does not exist
+[2024-08-18T10:06:05.008+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.optimize.topnkey.efficiency.threshold does not exist
+[2024-08-18T10:06:05.009+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.webui.explain.output does not exist
+[2024-08-18T10:06:05.009+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.plugin.rpc.port does not exist
+[2024-08-18T10:06:05.009+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.lock.query.string.max.length does not exist
+[2024-08-18T10:06:05.009+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.llap.io.track.cache.usage does not exist
+[2024-08-18T10:06:05.010+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.server2.authentication.jwt.jwks.skip.ssl.cert does not exist
+[2024-08-18T10:06:05.010+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.retry.initial.delay does not exist
+[2024-08-18T10:06:05.010+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.hook.proto.events.clean.freq does not exist
+[2024-08-18T10:06:05.011+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.use.orc.codec.pool does not exist
+[2024-08-18T10:06:05.011+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.query.results.cache.max.size does not exist
+[2024-08-18T10:06:05.011+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.auto.convert.anti.join does not exist
+[2024-08-18T10:06:05.011+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.strict.timestamp.conversion does not exist
+[2024-08-18T10:06:05.012+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.repl.bootstrap.dump.open.txn.timeout does not exist
+[2024-08-18T10:06:05.012+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.cardinality.preserving.join.optimization.factor does not exist
+[2024-08-18T10:06:05.012+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.stats.max.num.stats does not exist
+[2024-08-18T10:06:05.012+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 WARN HiveConf: HiveConf of name hive.mapjoin.full.outer does not exist
+[2024-08-18T10:06:05.013+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 INFO HiveClientImpl: Warehouse location for Hive client (version 2.3.9) is file:/user/hive/warehouse
+[2024-08-18T10:06:05.013+0000] {ssh.py:545} WARNING - 24/08/18 17:06:04 INFO metastore: Trying to connect to metastore with URI thrift://metastore:9083
+[2024-08-18T10:06:05.013+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO metastore: Opened a connection to metastore, current connections: 1
+[2024-08-18T10:06:05.024+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO metastore: Connected to metastore.
+[2024-08-18T10:06:05.372+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileSourceStrategy: Pushed Filters: 
+[2024-08-18T10:06:05.373+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileSourceStrategy: Post-Scan Filters: 
+[2024-08-18T10:06:05.374+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileSourceStrategy: Output Data Schema: struct<country_code: string, country_name: string, province: string, deaths: int, case_fatality_rate: double ... 1 more field>
+[2024-08-18T10:06:05.470+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO ParquetFileFormat: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter
+[2024-08-18T10:06:05.491+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2024-08-18T10:06:05.491+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2024-08-18T10:06:05.492+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2024-08-18T10:06:05.492+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2024-08-18T10:06:05.492+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2024-08-18T10:06:05.493+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2024-08-18T10:06:05.669+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 699.5 KiB, free 365.6 MiB)
+[2024-08-18T10:06:05.705+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 70.7 KiB, free 365.5 MiB)
+[2024-08-18T10:06:05.707+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on spark-master:38421 (size: 70.7 KiB, free: 366.2 MiB)
+[2024-08-18T10:06:05.710+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO SparkContext: Created broadcast 0 from saveAsTable at NativeMethodAccessorImpl.java:0
+[2024-08-18T10:06:05.722+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-08-18T10:06:05.848+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO SparkContext: Starting job: saveAsTable at NativeMethodAccessorImpl.java:0
+[2024-08-18T10:06:05.856+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Got job 0 (saveAsTable at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2024-08-18T10:06:05.857+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Final stage: ResultStage 0 (saveAsTable at NativeMethodAccessorImpl.java:0)
+[2024-08-18T10:06:05.857+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Parents of final stage: List()
+[2024-08-18T10:06:05.858+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Missing parents: List()
+[2024-08-18T10:06:05.859+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at saveAsTable at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2024-08-18T10:06:05.941+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 405.1 KiB, free 365.2 MiB)
+[2024-08-18T10:06:05.943+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 149.2 KiB, free 365.0 MiB)
+[2024-08-18T10:06:05.944+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on spark-master:38421 (size: 149.2 KiB, free: 366.1 MiB)
+[2024-08-18T10:06:05.944+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1427
+[2024-08-18T10:06:05.952+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at saveAsTable at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2024-08-18T10:06:05.953+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+[2024-08-18T10:06:05.977+0000] {ssh.py:545} WARNING - 24/08/18 17:06:05 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (192.168.16.14, executor 0, partition 0, ANY, 4880 bytes) taskResourceAssignments Map()
+[2024-08-18T10:06:06.141+0000] {ssh.py:545} WARNING - 24/08/18 17:06:06 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 192.168.16.14:43259 (size: 149.2 KiB, free: 366.2 MiB)
+[2024-08-18T10:06:07.295+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.16.14:43259 (size: 70.7 KiB, free: 366.1 MiB)
+[2024-08-18T10:06:07.904+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1933 ms on 192.168.16.14 (executor 0) (1/1)
+[2024-08-18T10:06:07.905+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+[2024-08-18T10:06:07.909+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO DAGScheduler: ResultStage 0 (saveAsTable at NativeMethodAccessorImpl.java:0) finished in 2.039 s
+[2024-08-18T10:06:07.911+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-08-18T10:06:07.912+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+[2024-08-18T10:06:07.913+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO DAGScheduler: Job 0 finished: saveAsTable at NativeMethodAccessorImpl.java:0, took 2.064741 s
+[2024-08-18T10:06:07.914+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO FileFormatWriter: Start to commit write Job 136ac5d3-5d1d-4c0f-9d84-a84016ccce47.
+[2024-08-18T10:06:07.954+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO FileFormatWriter: Write Job 136ac5d3-5d1d-4c0f-9d84-a84016ccce47 committed. Elapsed time: 39 ms.
+[2024-08-18T10:06:07.956+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO FileFormatWriter: Finished processing stats for write job 136ac5d3-5d1d-4c0f-9d84-a84016ccce47.
+[2024-08-18T10:06:07.966+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO InMemoryFileIndex: It took 2 ms to list leaf files for 1 paths.
+[2024-08-18T10:06:07.991+0000] {ssh.py:545} WARNING - 24/08/18 17:06:07 INFO HiveExternalCatalog: Persisting file based data source table `covid_db`.`kafka_data` into Hive metastore in Hive compatible format.
+[2024-08-18T10:06:08.030+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO SQLStdHiveAccessController: Created SQLStdHiveAccessController for session context : HiveAuthzSessionContext [sessionString=ae536095-3a26-49d1-95db-4ff8319e0fd9, clientType=HIVECLI]
+[2024-08-18T10:06:08.031+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
+[2024-08-18T10:06:08.032+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Mestastore configuration hive.metastore.filter.hook changed from org.apache.hadoop.hive.metastore.DefaultMetaStoreFilterHookImpl to org.apache.hadoop.hive.ql.security.authorization.plugin.AuthorizationMetaStoreFilterHook
+[2024-08-18T10:06:08.033+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Closed a connection to metastore, current connections: 0
+[2024-08-18T10:06:08.035+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Trying to connect to metastore with URI thrift://metastore:9083
+[2024-08-18T10:06:08.035+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Opened a connection to metastore, current connections: 1
+[2024-08-18T10:06:08.035+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Connected to metastore.
+[2024-08-18T10:06:08.097+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Trying to connect to metastore with URI thrift://metastore:9083
+[2024-08-18T10:06:08.097+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Opened a connection to metastore, current connections: 2
+[2024-08-18T10:06:08.098+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO metastore: Connected to metastore.
+[2024-08-18T10:06:08.143+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO SparkUI: Stopped Spark web UI at http://spark-master:4040
+[2024-08-18T10:06:08.145+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO StandaloneSchedulerBackend: Shutting down all executors
+[2024-08-18T10:06:08.145+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Asking each executor to shut down
+[2024-08-18T10:06:08.156+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2024-08-18T10:06:08.163+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO MemoryStore: MemoryStore cleared
+[2024-08-18T10:06:08.164+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO BlockManager: BlockManager stopped
+[2024-08-18T10:06:08.172+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2024-08-18T10:06:08.174+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2024-08-18T10:06:08.180+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO SparkContext: Successfully stopped SparkContext
+[2024-08-18T10:06:08.586+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO ShutdownHookManager: Shutdown hook called
+[2024-08-18T10:06:08.588+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO ShutdownHookManager: Deleting directory /tmp/spark-8b119a25-1c4d-426c-b18e-a21982d15bd7
+[2024-08-18T10:06:08.588+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO ShutdownHookManager: Deleting directory /tmp/spark-9f5d380e-69dd-4968-94a9-156646c7c507
+[2024-08-18T10:06:08.590+0000] {ssh.py:545} WARNING - 24/08/18 17:06:08 INFO ShutdownHookManager: Deleting directory /tmp/spark-9f5d380e-69dd-4968-94a9-156646c7c507/pyspark-d05930eb-d25f-4dce-bbc8-1470d89299fd
+[2024-08-18T10:06:08.632+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-08-18T10:06:08.632+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=kafka2hive, task_id=process2hive, run_id=manual__2024-08-18T10:05:58.476443+00:00, execution_date=20240818T100558, start_date=20240818T100559, end_date=20240818T100608
+[2024-08-18T10:06:08.667+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2024-08-18T10:06:08.675+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-18T10:06:08.676+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

@@ -1,0 +1,80 @@
+[2024-08-18T09:04:40.684+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-08-18T09:04:40.694+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: covid2hive.process2hive manual__2024-08-18T09:04:39.780265+00:00 [queued]>
+[2024-08-18T09:04:40.699+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: covid2hive.process2hive manual__2024-08-18T09:04:39.780265+00:00 [queued]>
+[2024-08-18T09:04:40.699+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 2
+[2024-08-18T09:04:40.706+0000] {taskinstance.py:2879} INFO - Executing <Task(SSHOperator): process2hive> on 2024-08-18 09:04:39.780265+00:00
+[2024-08-18T09:04:40.709+0000] {standard_task_runner.py:72} INFO - Started process 163 to run task
+[2024-08-18T09:04:40.712+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'covid2hive', 'process2hive', 'manual__2024-08-18T09:04:39.780265+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/covid2hive.py', '--cfg-path', '/tmp/tmpycp802kn']
+[2024-08-18T09:04:40.713+0000] {standard_task_runner.py:105} INFO - Job 20: Subtask process2hive
+[2024-08-18T09:04:40.737+0000] {task_command.py:467} INFO - Running <TaskInstance: covid2hive.process2hive manual__2024-08-18T09:04:39.780265+00:00 [running]> on host 87b087f6a7ed
+[2024-08-18T09:04:40.777+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ren294' AIRFLOW_CTX_DAG_ID='covid2hive' AIRFLOW_CTX_TASK_ID='process2hive' AIRFLOW_CTX_EXECUTION_DATE='2024-08-18T09:04:39.780265+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-18T09:04:39.780265+00:00'
+[2024-08-18T09:04:40.778+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-08-18T09:04:40.785+0000] {ssh.py:151} INFO - Creating ssh_client
+[2024-08-18T09:04:40.786+0000] {ssh.py:124} INFO - ssh_hook is not provided or invalid. Trying ssh_conn_id to create SSHHook.
+[2024-08-18T09:04:40.791+0000] {base.py:84} INFO - Retrieving connection 'spark_conn'
+[2024-08-18T09:04:40.791+0000] {ssh.py:304} WARNING - No Host Key Verification. This won't protect against Man-In-The-Middle attacks
+[2024-08-18T09:04:40.800+0000] {transport.py:1923} INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+[2024-08-18T09:04:40.924+0000] {transport.py:1923} INFO - Authentication (password) successful!
+[2024-08-18T09:04:40.925+0000] {ssh.py:494} INFO - Running command: bash && spark-submit --master spark://spark-master:7077 /opt/spark-apps/data2hive.py
+[2024-08-18T09:04:40.976+0000] {ssh.py:545} WARNING - bash: line 1: spark-submit: command not found
+[2024-08-18T09:04:40.987+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 191, in execute
+    result = self.run_ssh_client_command(ssh_client, self.command, context=context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 179, in run_ssh_client_command
+    self.raise_for_status(exit_status, agg_stderr, context=context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 173, in raise_for_status
+    raise AirflowException(f"SSH operator error: exit status = {exit_status}")
+airflow.exceptions.AirflowException: SSH operator error: exit status = 127
+[2024-08-18T09:04:40.991+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=covid2hive, task_id=process2hive, run_id=manual__2024-08-18T09:04:39.780265+00:00, execution_date=20240818T090439, start_date=20240818T090440, end_date=20240818T090440
+[2024-08-18T09:04:40.998+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-08-18T09:04:40.999+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 20 for task process2hive (SSH operator error: exit status = 127; 163)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2995, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3149, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3173, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 191, in execute
+    result = self.run_ssh_client_command(ssh_client, self.command, context=context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 179, in run_ssh_client_command
+    self.raise_for_status(exit_status, agg_stderr, context=context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/ssh/operators/ssh.py", line 173, in raise_for_status
+    raise AirflowException(f"SSH operator error: exit status = {exit_status}")
+airflow.exceptions.AirflowException: SSH operator error: exit status = 127
+[2024-08-18T09:04:41.016+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2024-08-18T09:04:41.026+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-18T09:04:41.027+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
