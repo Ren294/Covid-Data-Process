@@ -1,4 +1,28 @@
 # BIG DATA PROJECT: Covid-Data-Process
+
+# Table of Contents
+
+1. **[Project Objective](#project-objective)**
+2. **[Datasets Selection](#datasets-selection)**
+3. **[System Architecture](#system-architecture)**
+   - [Data Ingestion](#data-ingestion)
+   - [Real-Time Data Streaming](#real-time-data-streaming)
+   - [Data Storage](#data-storage)
+   - [Data Process](#data-process)
+   - [Containerization](#containerization)
+   - [Data Visualization](#data-visualization)
+4. **[Technologies Used](#technologies-used)**
+5. **[Installation and Deployment](#installation-and-deployment)**
+   - [Set up environment](#set-up-environment)
+   - [Running the Project](#running-the-project)
+6. **[Troubleshooting](#troubleshooting)**
+   - **[Common Issues](#common-issues)**
+   - **[Logs and Monitoring](#logs-and-monitoring)**
+7. **[Results and Analysis](#results-and-analysis)**
+8. **[Future Work](#future-work)**
+9. **[References](#references)**
+10. **[Authors](#authors)**
+
 # Project Objective
 The *Covid Data Process* project aims to design and implement a comprehensive, real-time data processing pipeline specifically tailored to manage the continuous influx of `COVID-19` data. This project seeks to build a scalable and efficient system capable of ingesting, processing, storing, and visualizing `COVID-19` data in real-time, enabling stakeholders to make informed decisions based on the most current information available.
 
