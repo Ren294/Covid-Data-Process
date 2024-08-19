@@ -1,4 +1,5 @@
 # BIG DATA PROJECT: Covid-Data-Process
+<span style="color:red">**WARNING:** This project only runs on ARM64 chips.</span>
 
 # Table of Contents
 
