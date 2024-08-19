@@ -102,7 +102,7 @@ The system is divided into several components, each responsible for specific tas
 
 ## Set up environment
 
-### 1. Create an AWS EC2 Instanc
+### 1. Create an AWS EC2 Instance
 
 **1.1. Log in to AWS Management Console:**
 
@@ -111,28 +111,28 @@ The system is divided into several components, each responsible for specific tas
 **1.2. Launch a New EC2 Instance:**
 
 - Navigate to the **EC2 Dashboard**.
-
+  
 - Click on **Launch Instance**.
 
 - Choose an **Amazon Machine Image (AMI)**:
   - `Amazon Linux 2 AMI` (HVM) - Kernel 5.10, SSD Volume Type
 
     <center>
-        <img src="image/imageEC2.jpeg" width="500" />
+        <img src="image/imageEC2.jpeg" width="600" />
     </center>
 
 - Choose an **Architecture**
   - This project only run on architecture `ARM64`
   
     <center>
-        <img src="image/architectureEC2.jpeg" width="500" />
+        <img src="image/architectureEC2.jpeg" width="600" />
     </center>
 
 - Choose an **Instance Type**:
   - For this project, `t4g.2xlarge` is recommended for its balance between performance and cost.
     
     <center>
-        <img src="image/typeEC2.jpeg" width="500" />
+        <img src="image/typeEC2.jpeg" width="600" />
     </center>
 
 - Configure **Instance Details**:
@@ -142,6 +142,118 @@ The system is divided into several components, each responsible for specific tas
   - You should increase to **60GB** for this project.
 
     <center>
-        <img src="image/storageEC2.jpeg" width="500" />
+        <img src="image/storageEC2.jpeg" width="600" />
     </center>
+  
+- Configure **Security Group**:
+  - Add the following rules:
+    - SSH: Port 22, Source: Replace **0.0.0.0** with `your IP`.
+    - Custom TCP Rule: Port **(0-10000)**, Source: Replace **0.0.0.0** with `your IP`.
+      
+    <center>
+        <img src="image/securityEC2.jpeg" width="600" />
+    </center>
+  
+- **Review and Launch the instance**.
 
+- Download the key pair **(`.pem` file)** and keep it safe; it’s needed for **SSH** access.
+
+**1.3. Access the EC2 Instance**
+- Open your terminal.
+  
+- Navigate to the directory where the `.pem` file is stored.
+  
+- Run the following command to connect to your instance:
+  
+    ```bash
+    ssh -i "your-key-file.pem" ec2-user@your-ec2-public-ip
+    ```
+### 2. Install `Docker` on the `EC2 Instance`
+
+**2.1: Update the Package Repository**
+- Run the following commands to ensure your package repository is up to date:
+
+    ```bash
+    sudo yum update -y
+    ```
+  
+**2.2. Install Docker**
+- Install `Docker` by running the following commands:
+
+    ```bash
+    sudo yum install -y docker
+    ```
+  
+- Start `Docker` and enable it to start at boot:
+
+    ```bash
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    ```
+
+- Verify `Docker` installation:
+
+    ```bash
+    docker --version
+    ```
+
+### 3. Install Docker Compose
+**3.1. Install Docker Compose**
+- `Docker Compose` is not available in the default `Amazon Linux 2` repositories, so you will need to download it manually:
+
+    ```bash
+      sudo curl -L "https://github.com/docker/compose/releases/download/v2.19.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    ```
+
+**3.2. Apply Executable Permissions**
+- Apply executable permissions to the binary:
+
+    ```bash
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
+    
+**3.3. Verify Docker Compose Installation**
+- Verify the installation by checking the version:
+
+    ```bash
+    docker-compose --version
+    ```
+    
+## 4. Clone the Project Repository
+
+**4.1. Install Git (if not already installed)**
+- Install Git to clone the repository:
+
+    ```bash
+    sudo yum install -y git
+    ```
+    
+**4.2. Clone the Repository**
+- Run the following command to clone the project repository:
+
+    ```bash
+    git clone https://github.com/your-username/covid-data-process.git
+    ```
+- Navigate to the project directory:
+
+  ```bash
+  cd covid-data-process
+  ```
+
+## 5.Running the Project
+
+**5.1. Port forwarding to the `AWS EC2 Instance`**
+- Use the SSH command provided:
+    ```bash
+    ssh -i "your-key-file.pem" \
+       -L 8080:localhost:6060 \
+       -L 8088:localhost:8088 \
+       -L 10000:localhost:10000 \
+       -L 9094:localhost:9094 \
+       -L 5432:localhost:5432 \
+       -L 9090:localhost:9090 \
+       -L 1010:localhost:1010 \
+       ec2-user@eec2-user@your-ec2-public-ip
+    ```
+
+    
