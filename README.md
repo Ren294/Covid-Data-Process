@@ -248,12 +248,63 @@ The system is divided into several components, each responsible for specific tas
     ssh -i "your-key-file.pem" \
        -L 8080:localhost:6060 \
        -L 8088:localhost:8088 \
-       -L 10000:localhost:10000 \
        -L 9094:localhost:9094 \
        -L 5432:localhost:5432 \
        -L 9090:localhost:9090 \
-       -L 1010:localhost:1010 \
        ec2-user@eec2-user@your-ec2-public-ip
     ```
+  - This command establishes a secure SSH connection to your EC2 instance and sets up port forwarding, allowing you to access various services running on your instance from your local machine.
 
+**5.2. Grant Execution Permissions for Shell Scripts**
+- Once connected, ensure all shell scripts have the correct execution permissions:
+
+    ```bash
+    chmod +x ./*
+    ```
     
+  - This command grants execute permissions to all .sh files in the project directory, allowing them to be run without any issues.
+ 
+**5.3. Initialize the Project Environment**
+- Run the `init-pro.sh` script to initialize the environment:
+
+    ```bash
+    ./init-pro.sh
+    ```
+    
+- This script performs the following tasks:
+  - Sets the `AIRFLOW_UID` environment variable to match the current user's ID.
+  - Creates necessary directories for `Spark` and `NiFi`.
+  - Prepares the environment for running `Airflow` by initializing it with `Docker`.
+
+**5.4. Start the Docker Containers**
+- Next, bring up all the services defined in the `docker-compose` file:
+
+    ```bash
+    docker-compose --profile all up
+    ```
+    
+   - This command starts all the necessary containers for the project, including those for NiFi, Kafka, Spark, Hadoop, Hive, and Airflow.
+
+**5.5. Post-Deployment Configuration**
+- After the `Docker containers` are running, execute the `after-compose.sh` script to perform additional setup:
+
+    ```bash
+    ./after-compose.sh
+    ```
+    
+- This script:
+  - Sets up `HDFS directories` and assigns the appropriate permissions.
+  - Creates `Kafka topics` (covidin and covidout).
+  - Submits a `Spark job` to process streaming data.
+
+**5.6. Configure and Run Apache NiFi**
+- Now, you need to configure and start your data workflows in `Apache NiFi`:
+  - Open the `NiFi Web UI` by navigating to `http://localhost:8080/nifi` in your browser.
+  - Add the [template](template/Ren294TemplateFinal.xml) for the `NiFi` workflow:
+
+    <center>
+        <img src="image/nifi.jpeg" width="900" />
+    </center>
+    
+  - Start the `NiFi` workflow to begin ingesting and processing `COVID-19` data.
+
