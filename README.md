@@ -1,6 +1,6 @@
 # BIG DATA PROJECT: Covid-Data-Process
 # Project Objective
-The Covid Data Process project aims to design and implement a comprehensive, real-time data processing pipeline specifically tailored to manage the continuous influx of `COVID-19` data. As the pandemic unfolds, timely and accurate data processing has become crucial for understanding and mitigating its impact. This project seeks to build a scalable and efficient system capable of ingesting, processing, storing, and visualizing `COVID-19` data in real-time, enabling stakeholders to make informed decisions based on the most current information available.
+The Covid Data Process project aims to design and implement a comprehensive, real-time data processing pipeline specifically tailored to manage the continuous influx of `COVID-19` data. This project seeks to build a scalable and efficient system capable of ingesting, processing, storing, and visualizing `COVID-19` data in real-time, enabling stakeholders to make informed decisions based on the most current information available.
 
 # Datasets Selection
 The dataset, sourced from the [COVID-19 API](https://covid-api.com/api), offers comprehensive and regularly updated reports on the global spread and impact of `COVID-19`. It encompasses a wide range of data points that track the pandemic's progression across various regions, including countries, states, and provinces. This dataset captures essential metrics such as the number of confirmed cases, deaths, recoveries, and active cases, providing a granular view of the pandemic's evolution over time.
@@ -37,7 +37,7 @@ Data from API format example:
 # System Architecture
 The system architecture for this `COVID-19` data processing pipeline is designed to ensure efficient data ingestion, processing, storage, and visualization. It leverages a combination of open-source technologies and cloud services to provide a scalable, robust, and flexible framework for managing and analyzing large volumes of real-time data.
 
-- The system is divided into several components, each responsible for specific tasks within the data process:
+The system is divided into several components, each responsible for specific tasks within the data process:
 
 <center>
     <img src="image/arch.jpeg" width="900" />
@@ -63,7 +63,11 @@ The system architecture for this `COVID-19` data processing pipeline is designed
 
 - **Data Warehousing**: `Apache Hive` on `HDFS` enables efficient querying of large datasets.
 
+## Data Process:
+
 - **Job Scheduling**: `Airflow` orchestrates and schedules the system’s workflows, ensuring smooth execution of data ingestion, processing, and storage tasks.
+
+- **Batch processing**: `Apache Spark` processing on data stored in HDFS, facilitating complex data analysis tasks.
 
 ## Containerization:
 
@@ -85,9 +89,59 @@ The system architecture for this `COVID-19` data processing pipeline is designed
 - `Apache NiFi`: Handles data ingestion and initial processing from the COVID-19 API.
 - `Apache Kafka`: Enables real-time data streaming between system components.
 - `Redpanda`: Monitors Kafka to ensure stable data flow and system performance.
-- `Apache Spark Streaming`: Processes data in real-time, performing computations like aggregations and filtering.
+- `Apache Spark`: For both real-time and batch data processing.
 - `Hadoop HDFS`: Provides distributed storage for large volumes of processed data.
 - `Apache Hive`: Allows SQL-like querying and analysis of data stored in HDFS.
-- `Apache Airflow`: Orchestrates and schedules the workflow of the entire system.
+- `Apache Airflow`: rchestrates and schedules the workflow of the entire system.
+  
 ### **Visualization**
+
 - `Amazon QuickSight`: Provides business intelligence and data visualization capabilities for insightful reporting and analysis.
+
+# Installation and Deployment
+
+## Set up environment
+
+### 1. Create an AWS EC2 Instanc
+
+**1.1. Log in to AWS Management Console:**
+
+- Visit the [AWS Management Console](https://aws.amazon.com/console/) and log in with your credentials.
+
+**1.2. Launch a New EC2 Instance:**
+
+- Navigate to the **EC2 Dashboard**.
+
+- Click on **Launch Instance**.
+
+- Choose an **Amazon Machine Image (AMI)**:
+  - `Amazon Linux 2 AMI` (HVM) - Kernel 5.10, SSD Volume Type
+
+    <center>
+        <img src="image/imageEC2.jpeg" width="500" />
+    </center>
+
+- Choose an **Architecture**
+  - This project only run on architecture `ARM64`
+  
+    <center>
+        <img src="image/architectureEC2.jpeg" width="500" />
+    </center>
+
+- Choose an **Instance Type**:
+  - For this project, `t4g.2xlarge` is recommended for its balance between performance and cost.
+    
+    <center>
+        <img src="image/typeEC2.jpeg" width="500" />
+    </center>
+
+- Configure **Instance Details**:
+  - Ensure that **Auto-assign Public IP** is set to "Enable".
+
+- Configure **Storage**:
+  - You should increase to **60GB** for this project.
+
+    <center>
+        <img src="image/storageEC2.jpeg" width="500" />
+    </center>
+
